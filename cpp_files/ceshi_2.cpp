@@ -1,47 +1,41 @@
-#include <iostream>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
-
-vector<int> sieve(int limit) {
-    vector<int> numbers;
-    vector<bool> flags(limit + 1, true);
-    flags[0] = flags[1] = false;
-
-    for (int i = 2; i <= limit; ++i) {
-        if (flags[i]) numbers.push_back(i);
-        for (int j = 0; j < numbers.size() && i * numbers[j] <= limit; ++j) {
-            flags[i * numbers[j]] = false;
-            if (i % numbers[j] == 0) break;
+#define ll long long
+vector < ll > v;
+int main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+	ll n, m;
+    cin >> n >> m;
+    ll x, y, z, o = 0, t = 0;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> x;
+        v.push_back(x);
+        t += v[i];
+    }
+    while (m--)
+    {
+        cin >> x;
+        if (x == 1)
+        {
+            cin >> y >> z;
+            y--;
+           	int k = (o + y) % n;
+            if (k < 0) k += n;
+            t = t - v[k] + z;
+            v[k] = z;
+            cout << t << endl;
+        }
+        else
+        {
+            cin >> y;
+            o = (o - y) % n;
+            if (o < 0) o += n;
+            cout << t << endl;
         }
     }
-    return numbers;
-}
-
-long long mod_exp(long long base, long long exp, long long mod) {
-    long long result = 1;
-    base = base % mod;
-    while (exp > 0) {
-        if (exp % 2 == 1) result = (result * base) % mod;
-        exp = exp >> 1;
-        base = (base * base) % mod;
-    }
-    return result;
-}
-
-int main() {
-    int n, m, k;
-    cin >> n >> m >> k;
-
-    vector<int> list1 = sieve(n);
-    vector<int> list2 = sieve(m);
-
-    int val1 = list1.back();
-    int val2 = list2.back();
-
-    long long result = mod_exp(val1, val2, k);
-
-    cout << result << endl;
-
-    return 0;
+	return 0;
 }
