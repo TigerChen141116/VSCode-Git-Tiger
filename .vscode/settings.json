@@ -1,0 +1,61 @@
+{
+    // ==================== C/C++ 核心配置 ====================
+    "C_Cpp.errorSquiggles": "enabled",
+    "C_Cpp.intelliSenseEngine": "default",
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.default.cStandard": "c17",
+    "C_Cpp.default.compilerPath": "D:\\mingw64\\bin\\g++.exe",
+
+    // ==================== 终端配置（解决中文乱码） ====================
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.profiles.windows": {
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        }
+    },
+    "terminal.integrated.env.windows": {
+        "CHCP": "65001"
+    },
+
+    // ==================== 编辑器基础配置 ====================
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4,
+    "editor.autoClosingBrackets": "always",
+    "editor.wordWrap": "off",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+
+    // ==================== 减少干扰配置 ====================
+    "extensions.ignoreRecommendations": true,
+    "update.mode": "none",
+
+    // ==================== Code Runner 快速运行代码 ====================
+   // "code-runner.runInTerminal": true,
+   // "code-runner.executorMap": {
+   //     "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt.exe -std=c++17 -O2 && $dir$fileNameWithoutExt.exe"
+   // },
+	"code-runner.executorMap": {
+    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
+    "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $fileNameWithoutExt.exe"
+	},
+	"code-runner.runInTerminal": true,
+
+    // ==================== CodeGeeX AI 辅助配置 ====================
+    "codegeex.enable": true,
+    "codegeex.chat.enable": true,
+    "codegeex.completion.enable": true,
+    "codegeex.language": "zh-CN",
+    "codegeex.showWelcomeMessage": false,
+
+    // ==================== 修复文件类型关联（关键） ====================
+    "files.associations": {
+        "*.json": "jsonc",
+        "settings.json": "jsonc"
+    }
+}
